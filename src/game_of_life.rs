@@ -109,10 +109,19 @@ pub fn load_pattern(choice: u32) -> Grid {
     grid
 }
 // Number of live cells.
-pub fn population(_grid: &Grid) -> usize {
-    todo!("Implement population")
-}
+pub fn population(grid: &Grid) -> usize {
+    let mut count = 0;
 
+    for row in 0..ROWS {
+        for col in 0..COLS {
+            if grid[row][col] {
+                count += 1;
+            }
+        }
+    }
+
+    count
+}
 // TODO: replace this Week 12 version. New play(): show the pattern menu (1 blinker,
 // 2 block, 3 glider), ask how many generations, then print each generation with its
 // number and population, waiting for Enter between steps.
