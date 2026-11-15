@@ -238,4 +238,15 @@ fn glider_moves_one_down_one_right_after_four() {
     assert_eq!(grid, expected);
 }
 
+#[test]
+// Catches a version of next_generation that incorrectly keeps isolated cells alive.
+fn single_cell_dies() {
+    let start = grid_from(&[(5, 5)]);
+
+    let next = next_generation(&start);
+
+    let expected = grid_from(&[]);
+
+    assert_eq!(next, expected);
+}
 }
